@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Game from './tic-tec-toe/game';
-import Users from './test/users';
-import Users2 from './test/users2';
-import Contact from './test/contact';
-import Editor from './test/editor';
+import Users from './components/users';
+import Users2 from './components/users2';
+import Contact from './components/contact';
+import QuillEditor from './components/quilleditor';
 import NotFound from './notfound';
 import * as serviceWorker from './serviceWorker';
 
@@ -32,7 +32,7 @@ const routing = (
             <Link to="/contact">Contact</Link>
             </li>
             <li>
-            <Link to="/editor">Editor</Link>
+            <Link to="/quilleditor">QuillEditor</Link>
             </li>
         </ul>
         <Switch>
@@ -41,7 +41,7 @@ const routing = (
             <Route path="/users/:id" component={Users} />
             <Route path="/users2" component={Users2} />
             <Route path="/contact" component={Contact} />
-            <Route path="/editor" component={Editor} />
+            <Route path="/quilleditor" component={QuillEditor} />
             <Route component={NotFound} />
         </Switch>
     </div>

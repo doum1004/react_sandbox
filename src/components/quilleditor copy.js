@@ -4,10 +4,10 @@ import hljs from 'highlight.js'
 import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css'
 import 'highlight.js/styles/darcula.css'
-import './editor.css'
+import './quilleditor.css'
 
 const ReactQuill = require('react-quill'); // CommonJS
-
+ReactQuill.
 hljs.configure({
   languages: ['python'] //['javascript', 'ruby', 'python', 'rust'],
 })
@@ -46,7 +46,7 @@ const formats = [
   'code-block',
 ]
 
-class Editor extends React.Component {
+class QuillEditor extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
@@ -54,9 +54,30 @@ class Editor extends React.Component {
   int i = 0</pre></code>`,
       } // You can also pass a Quill Delta here
       this.handleChange = this.handleChange.bind(this)
+      this.quillRef = null;      // Quill instance
+      this.reactQuillRef = null; // ReactQuill component
     }
-  
-    handleChange(value) {
+    componentDidMount() {
+      this.attachQuillRefs()
+    }
+    
+    componentDidUpdate() {
+      this.attachQuillRefs()
+    }
+    
+    attachQuillRefs = () => {
+      if (typeof this.reactQuillRef.getEditor !== 'function') return;
+      this.quillRef = this.reactQuillRef.getEditor();
+      this.quillRef.formatLine(0, this.quillRef.getLength(), { 'code-block': true });
+    }
+
+    insertText = () => {
+      var range = this.quillRef.getSelection();
+      let position = range ? range.index : this.quillRef.getLength();
+      this.quillRef.insertText(position, 'Hello, World! ')
+    }
+
+    handleChange(value, b, c, editor) {
       this.setState({ text: value })
     }
   
@@ -64,13 +85,15 @@ class Editor extends React.Component {
       return (
         <div id='editor'>
           <ReactQuill value={this.state.text}
+          ref={(el) => { this.reactQuillRef = el }}
                               onChange={this.handleChange}
-                              theme="bubble"
+                              theme="snow"
                               modules={modules}
                               formats={formats} />
+        <button onClick={this.insertText}>Insert Text</button>
         </div>
       )
     }
   }
 
-  export default Editor;
+  export default QuillEditor;
