@@ -1,0 +1,13 @@
+.editor {
+  background: #000000;
+  height: 600px;
+}
+
+.ql-container {
+  background: #f7dfdf;
+  height: 300px !important;
+}
+
+/* .ql-syntax {
+  height: 100% !important;
+} */
