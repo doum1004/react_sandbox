@@ -7,6 +7,7 @@ import Users from './components/users';
 import Users2 from './components/users2';
 import Contact from './components/contact';
 import QuillEditor from './components/quilleditor';
+import CodeMirrorEditor from './components/codemirroreditor';
 import NotFound from './notfound';
 import * as serviceWorker from './serviceWorker';
 
@@ -34,6 +35,9 @@ const routing = (
             <li>
             <Link to="/quilleditor">QuillEditor</Link>
             </li>
+            <li>
+            <Link to="/codemirroreditor">CodeMirrorEditor</Link>
+            </li>
         </ul>
         <Switch>
             <Route exact path="/" component={App} />
@@ -42,6 +46,7 @@ const routing = (
             <Route path="/users2" component={Users2} />
             <Route path="/contact" component={Contact} />
             <Route path="/quilleditor" component={QuillEditor} />
+            <Route path="/codemirroreditor" component={CodeMirrorEditor} />
             <Route component={NotFound} />
         </Switch>
     </div>
