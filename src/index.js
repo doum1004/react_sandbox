@@ -15,40 +15,44 @@ import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 const routing = (
 <Router>
-    <div>
-        <ul>
-            <li>
-            <Link to="/">Home</Link>
-            </li>
-            <li>
-            <Link to="/game">Game</Link>
-            </li>
-            <li>
-            <Link to="/users/1">Users</Link>
-            </li>
-            <li>
-            <Link to="/users2">Users2</Link>
-            </li>
-            <li>
-            <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-            <Link to="/quilleditor">QuillEditor</Link>
-            </li>
-            <li>
-            <Link to="/codemirroreditor">CodeMirrorEditor</Link>
-            </li>
-        </ul>
-        <Switch>
-            <Route exact path="/" component={App} />
-            <Route path="/game" component={Game} />
-            <Route path="/users/:id" component={Users} />
-            <Route path="/users2" component={Users2} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/quilleditor" component={QuillEditor} />
-            <Route path="/codemirroreditor" component={CodeMirrorEditor} />
-            <Route component={NotFound} />
-        </Switch>
+    <div class="row">
+        <div class="column">
+            <ul>
+                <li>
+                <Link to="/">Home</Link>
+                </li>
+                <li>
+                <Link to="/game">Game</Link>
+                </li>
+                <li>
+                <Link to="/users/1">Users</Link>
+                </li>
+                <li>
+                <Link to="/users2">Users2</Link>
+                </li>
+                <li>
+                <Link to="/contact">Contact</Link>
+                </li>
+                <li>
+                <Link to="/quilleditor">QuillEditor</Link>
+                </li>
+                <li>
+                <Link to="/codemirroreditor">CodeMirrorEditor</Link>
+                </li>
+            </ul>
+        </div>
+        <div class="column">
+            <Switch>
+                <Route exact path="/" component={App} />
+                <Route path="/game" component={Game} />
+                <Route path="/users/:id" component={Users} />
+                <Route path="/users2" component={Users2} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/quilleditor" component={QuillEditor} />
+                <Route path="/codemirroreditor" component={CodeMirrorEditor} />
+                <Route component={NotFound} />
+            </Switch>
+        </div>
     </div>
 </Router>
 )
